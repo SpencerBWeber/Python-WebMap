@@ -20,7 +20,7 @@ map = folium.Map(location=[40.643006, -111.935535], zoom_start=6, tiles="Stamen 
 fgv = folium.FeatureGroup(name="Volcanoes")
 
 for lt, ln, el, name in zip(lat, lon, elev, name):
-    iframe = folium.IFrame(html="Name: %s\n Elevation: %s" % ( name, el), width=200, height=60)
+    iframe = folium.IFrame(html="Name: %s \n Elevation: %s" % ( name, el), width=200, height=60)
     fgv.add_child(folium.CircleMarker(location=[lt, ln], radius=6, popup=folium.Popup(iframe), fill_color=color_producer(el), color='grey', fill_opacity=0.7))
 
 fgp = folium.FeatureGroup(name="Population")
