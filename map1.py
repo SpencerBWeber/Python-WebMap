@@ -7,13 +7,21 @@ lon = list(data['LON'])
 elev = list(data["ELEV"])
 name = list(data['NAME'])
 
+def color_producer(elevation):
+    if elevation < 1000:
+        return "green"
+    elif 1000 <= elevation < 3000:
+        return "orange"
+    else:
+        return "red"
+
 map = folium.Map(location=[40.643006, -111.935535], zoom_start=6, tiles="Stamen Terrain")
 
 fg = folium.FeatureGroup(name="My Map")
 
 for lt, ln, el, name in zip(lat, lon, elev, name):
     iframe = folium.IFrame(html="Name: %s\n Elevation: %s" % ( name, el), width=200, height=60)
-    fg.add_child(folium.Marker(location=[lt, ln], popup=folium.Popup(iframe), icon=folium.Icon(color='red')))
+    fg.add_child(folium.Marker(location=[lt, ln], popup=folium.Popup(iframe), icon=folium.Icon(color=color_producer(el))))
 
 map.add_child(fg)
 
