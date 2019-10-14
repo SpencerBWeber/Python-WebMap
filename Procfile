@@ -1,1 +1,1 @@
-web: gunicorn app:map1.py
+web: gunicorn app:map1
